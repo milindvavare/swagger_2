@@ -1,0 +1,981 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Swagger | </title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css"
+  rel="stylesheet"
+/>
+</head>
+<style type="text/css">
+	body{
+		background: #F2F3F4;
+	}
+	.main-div{
+			width: 100%;
+			height: 60px;
+
+		}
+		.backbtn{
+			margin-top: 20px;
+			border:none;
+			background: white;
+		}
+		.icon{
+			font-size: 20px;
+		}
+	#file_upload_section{
+		width: 100%;
+		height: 100vh;
+	    background: white;
+	}
+	#synthesize_section{
+		width: 100%;
+		height: 100vh;
+		background: ;
+		display: none;
+	}
+	#viewing_section{
+		width: 100%;
+		height: 100vh;
+		background: ;
+		display: none;
+	}
+	#outline_section{
+		width: 100%;
+		height: 100vh;
+		background: ;
+		display: none;
+	}
+	.menu-box{		
+		height: 80vh;
+		background: white;
+	}
+	.content-box{
+		
+		height: 80vh;
+		background: white;
+		border-radius: 0px;
+	}
+	.bottom_buttons{
+		width: 100%;
+		height: 10vh;
+		background: white;
+		position: fixed;
+		bottom: 0;
+	}
+	
+	    /* width */
+		::-webkit-scrollbar {
+		  width: 5px;
+		}
+
+		/* Track */
+		::-webkit-scrollbar-track {
+		  background: #f1f1f1; 
+		}		 
+		
+		::-webkit-scrollbar-thumb {
+		  background: #888; 
+		}
+
+		/* Handle on hover */
+		::-webkit-scrollbar-thumb:hover {
+		  background: #555; 
+		}
+		.menu-ul{
+			list-style: none;
+			margin-top: 5px;
+		}
+		.menu-ul li{
+
+		}
+		.menu-ul .menu-li-head-title{
+			font-weight: bold;
+		}
+		.menu-ul .active{
+			color: #117A65;
+			font-weight: bold;
+		}
+		.next-btn{
+			height: 50px;
+			width: 120px;
+			font-size: 15px;
+			font-weight: bold;
+			margin-top: 10px;
+			margin-left: 30px;
+		}
+		main {
+	 padding: 1.25rem;
+	 background-color: rgba(256, 256, 256, 1);
+}
+ main a {
+	 text-align: center;
+	 display: block;
+	 margin-top: 2em;
+	 color: #333;
+}
+ main a:hover {
+	 color: #666;
+}
+ .accordion {
+	 border: solid 2px #f5f5f5;
+	 transition: all 0.3s ease-in-out;
+}
+ .accordion + .accordion {
+	 margin-top: 0.25rem;
+}
+ .accordion:hover {
+	 background-color: #f5f5f5;
+}
+ .accordion .accordion__title {
+	 list-style-type: none;
+	 cursor: pointer;
+	 font-size: 1rem;
+	 font-weight: 700;
+	 color: #555;
+	 padding: 0.875rem 2.5rem 0.875rem 0.875rem;
+	 background-image: url("data:image/svg+xml;	charset=UTF-8,%3csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M23.024 11.263l-7.024 7.023-7.022-7.023-3.091 3.090 8.569 8.569c0.413 0.413 0.961 0.64 1.545 0.64s1.133-0.228 1.545-0.64l8.569-8.569-3.091-3.090z' fill='%23555555'/%3e%3c/svg%3e");
+	 background-repeat: no-repeat;
+	 background-position: right 0.75rem top 0.625rem;
+	 background-size: 1.5rem;
+}
+ .accordion .accordion__title::marker, .accordion .accordion__title::-webkit-details-marker {
+	 display: none;
+}
+ .accordion .accordion__content {
+	 padding: 0 1rem 1rem 1rem;
+}
+ .accordion .accordion__content p {
+	 margin: 0;
+}
+ .accordion .accordion__content p + p {
+	 margin-top: 0.5em;
+}
+ .accordion[open] {
+	 background-color: #ebebeb;
+	 border-color: #ebebeb;
+}
+ .accordion[open] .accordion__title {
+	 background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M8.976 22.025l7.024-7.023 7.022 7.023 3.091-3.090-8.568-8.568c-0.413-0.412-0.961-0.64-1.545-0.64s-1.133 0.228-1.545 0.64l-8.569 8.569 3.091 3.090z' fill='%23555555'/%3e%3c/svg%3e");
+}
+</style>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+<form id="form" method="post" enctype="multipart/form-data">
+
+<div style="display:;" id="file_upload_section">
+	<div class="card main-div">		
+	</div>
+<div class="container">
+	<br><br>
+
+	<div>
+		<label for="upload">
+			<input type="file" name="file" id="upload" accept=".csv, .txt" multiple>
+		Upload Content
+		</label>
+	</div>
+	<div class="files">
+		<h2 style="font-size: 15px;">Files Selected</h2>
+		<ul id="selected_files_ul"></ul>
+	</div>
+	<!-- <input type="submit" value="Upload" name="submit" id="submit" /> -->
+	<!-- <button class="btn btn-primary">Upload</button> -->
+	<label class="btn btn-primary next_to_synthesize_section">Upload</label>
+
+</div>
+</div>
+
+
+<input type="hidden" name="options" class="options_text">
+
+<div id="synthesize_section">
+	<div class="card main-div">
+		<div class="container-fluid">
+		<div  class="row">
+			<div  class="col-md-1">
+				<button class="backbtn"><i class="fas fa-arrow-left icon"></i></button>
+			</div>
+		</div>
+	   </div>
+	</div>
+	<div class="container">
+		<br><br>
+		<center>
+			<div style="float: center;width: 80%;">
+			<div style="text-align: left;" class="row">
+				<div  class="col-md-12">
+				<div style="line-height: 0px;" class="form-check form-check-inline">
+				  <input style="" class="form-check-input chdckbox_options" type="checkbox" id="summary" value="key_summary" />
+				  <label style="background: none!important;color: black;" class="form-check-label" for="summary">Summary</label>
+				</div>
+
+				</div>
+			
+				<div class="col-md-12">
+					<div style="line-height: 0px;" class="form-check form-check-inline">
+				  <input style="" class="form-check-input chdckbox_options" type="checkbox" id="insights" value="key_insights" />
+				  <label style="background: none!important;color: black;" class="form-check-label" for="insights">Key Insights</label>
+				</div>
+				</div>
+			
+				<div class="col-md-12">
+					<div style="line-height: 0px;" class="form-check form-check-inline">
+				  <input style="" class="form-check-input chdckbox_options" type="checkbox" id="quetions" value="key_questions" />
+				  <label style="background: none!important;color: black;" class="form-check-label" for="quetions">Key Quetions</label>
+				</div>
+				</div>
+			
+				<div class="col-md-12">
+					<div style="line-height: 0px;" class="form-check form-check-inline">
+				  <input style="" class="form-check-input chdckbox_options" type="checkbox" id="points" value="central_themes_main_points" />
+				  <label style="background: none!important;color: black;" class="form-check-label" for="points">Central Theme & Main Points</label>
+				</div>
+				</div>
+			
+				<div class="col-md-12">
+					<div style="line-height: 0px;" class="form-check form-check-inline">
+				  <input style="" class="form-check-input chdckbox_options" type="checkbox" id="similarities" value="similarity_difference" />
+				  <label style="background: none!important;color: black;" class="form-check-label" for="similarities">Similarities & Differences</label>
+				</div>
+				</div>
+			</div>
+			<br><br>
+			<div class="row">
+				<div class="col-md-12">
+				   <button  style="margin-right: 10%;" class="btn btn-primary process_btn proceed_to_viewing_section">Process</button>
+
+
+				   <button style="display:none;" class="btn btn-primary loading_btn" type="button" disabled>
+  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  Please Wait...
+</button>
+
+
+
+				</div>
+			</div>
+		</div>
+		</center>
+	</div>
+</div>
+
+
+
+
+
+</form>	
+
+
+
+
+<div id="viewing_section">
+	<div class="card main-div">
+		<div class="container-fluid">
+		<div  class="row">
+			<div  class="col-md-1">
+				<button class="backbtn"><i class="fas fa-arrow-left icon back_btn2"></i></button>
+			</div>
+		</div>
+	   </div>
+	</div>
+	<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2 menu-box"><br>
+			<div class="menu-section" style="overflow-x: auto;height: 75vh;">
+				
+
+
+
+
+
+
+
+
+
+
+
+				<ul class="menu-ul">
+					<li class="menu-li-head-title">Combined</li>					
+				</ul>
+				<ul class="menu-ul">					
+					<li>Summary</li>
+					<li class="active">Insights</li>
+					<li>Similarities & Difference</li>
+				</ul>
+				<hr>
+
+				<ul class="menu-ul">
+					<li class="menu-li-head-title">Article 1</li>					
+				</ul>
+				<ul class="menu-ul">					
+					<li>Summary</li>
+					<li>Insights</li>					
+				</ul>
+				<hr>
+				<ul class="menu-ul">
+					<li class="menu-li-head-title">Article 2</li>					
+				</ul>
+				<ul class="menu-ul">					
+					<li>Summary</li>
+					<li>Insights</li>					
+				</ul>
+			</div>
+		</div>
+
+		<div class="col-md-10">
+			<div class="card content-box">
+				<div style="width: 100%;height: auto;overflow-x: auto;">
+					<div style="height: 1000px;">
+						<br><br>
+					
+
+
+
+
+
+
+						<main>
+  <div id="fetchData">
+  <!-- <details class="accordion">
+    <summary class="accordion__title">
+      Accordion title
+    </summary>
+    <div class="accordion__content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sodales, nulla sit amet porttitor rhoncus, lacus ex vestibulum libero, ac mollis neque ante id justo. Nam tempor euismod nisi ac ornare. Pellentesque id sapien lacinia, venenatis est aliquam, dignissim elit. Suspendisse potenti. Cras ut ante in libero tempus sodales sed quis dolor.</p>
+    </div>
+  </details> -->
+ 
+ 
+</div>
+  
+</main>  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					</div>					
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row bottom_buttons viewing_section_bottom">
+		<div class="col-md-2"></div>
+		<div class="col-md-10">
+			<div style="display:inline-flex;">
+			<h5 style="line-height: 80px;font-weight: normal;">I am Happy with the final outputs let's create my final Doc!</h5>
+			<button class="btn btn-primary next-btn" onclick="next_viewing_btn()">Next</button>
+		     </div>
+		</div>
+		
+	</div>	  
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="outline_section">
+	<div class="card main-div">
+		<div class="container-fluid">
+		<div  class="row">
+			<div  class="col-md-1">
+				<button class="backbtn"><i class="fas fa-arrow-left icon back_btn3"></i></button>
+			</div>
+		</div>
+	   </div>
+	</div>
+	<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2 menu-box">
+			<div class="menu-section">
+				<br>
+				<ul class="menu-ul">
+					<li class="menu-li-head-title">Combined</li>					
+				</ul>
+				<ul class="menu-ul">					
+					<li><input type="checkbox">&nbsp;Summary</li>
+					<li><input type="checkbox">&nbsp;Insights</li>
+					<li><input type="checkbox">&nbsp;Similarities & Difference</li>
+				</ul>
+				<hr>
+
+				<ul class="menu-ul">
+					<li class="menu-li-head-title">Article 1</li>					
+				</ul>
+				<ul class="menu-ul">					
+					<li><input type="checkbox">&nbsp;Summary</li>
+					<li><input type="checkbox">&nbsp;Insights</li>					
+				</ul>
+				<hr>
+				<ul class="menu-ul">
+					<li class="menu-li-head-title">Article 2</li>					
+				</ul>
+				<ul class="menu-ul">					
+					<li><input type="checkbox">&nbsp;Summary</li>
+					<li><input type="checkbox">&nbsp;Insights</li>					
+				</ul>
+			</div>
+		</div>
+
+		<div class="col-md-10">
+			<div class="card content-box">
+				<div class="container-fluid">
+					<br><br><br>
+					<div class="row">
+						<div class="col-md-12">
+							<center>
+							<h5>Create outline using selected outputs.</h5>	<br>
+							<textarea style="width: 50%;height: 100px;" class="form-control" placeholder="Enter Prompt"></textarea>
+							<br>
+							<button class="btn btn-primary">Let's go!</button>
+						    </center>
+						</div>
+					</div>					
+								
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- <div class="row bottom_buttons bottom_outline_section">
+		<div class="col-md-2"></div>
+		<div class="col-md-10">
+			<div style="display:inline-flex;">
+			<h5 style="line-height: 80px;font-weight: normal;">I am Happy with the final outputs let's create my final Doc!</h5>
+			<button class="btn btn-primary" style="height: 50px;width: 120px;font-size: 15px;font-weight: bold;margin-top: 10px;margin-left: 30px;">Next</button>
+		     </div>
+		</div>
+		
+	</div>	 -->  
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.js"
+></script>
+<!-- <script type="text/javascript" src="js/get_menu.js"></script> -->
+<script type="text/javascript" src="js/getdata.js"></script>
+<!-- <script type="text/javascript" src="js/selected_options.js"></script> -->
+
+</html>
+<script type="text/javascript">
+	"use strict";
+
+// no react or anything
+let state = {};
+
+// state management
+function updateState(newState) {
+  state = {
+    ...state,
+    ...newState
+  };
+  console.log(state);
+}
+
+// event handlers
+$("#upload").change(function (e) {
+  let files = document.getElementsByTagName("input")[0].files;
+  let filesArr = Array.from(files);
+  updateState({
+    files: files,
+    filesArr: filesArr
+  });
+  renderFileList();
+});
+
+
+$(".files").on("click", "li > i", function (e) {
+  let key = $(this).parent().attr("key");
+  let curArr = state.filesArr;
+  curArr.splice(key, 1);
+  updateState({
+    filesArr: curArr
+  });
+  renderFileList();
+});
+
+
+
+
+$('.next_to_synthesize_section').click(function(){
+	$('#file_upload_section').hide();
+  $('#synthesize_section').show();
+})
+
+
+
+
+// $("form").on("submit", function (e) {
+//   e.preventDefault();
+//   console.log(state);
+//   //renderFileList();  
+
+//   // $('#file_upload_section').hide();
+//   // $('#synthesize_section').show();
+
+//    $.ajax({
+//    url: "php/getdata.php",
+//    method: "POST",
+//    data: new FormData(this),
+//    success:function(res){
+//    	console.log(res);
+//    }
+
+//  });
+// });
+
+
+
+	$('.chdckbox_options').click(function(){
+	//alert("okk");
+	   var selected = new Array();
+	 	$(".chdckbox_options:checked").each(function () {
+		    selected.push(this.value);
+		});
+
+		
+		if (selected.length > 0) {
+		    //alert("Selected values: " + selected.join(","));
+		    //console.log(selected.length);
+
+
+		    const dynamicArray = selected;
+		    var i = 0;	
+		    var count = i++;   
+		    const obj = Object.fromEntries(
+			  dynamicArray.map(name => ["options_"+i++, {
+			    name: name			    		    
+			  }])
+			)
+
+
+const json = JSON.stringify(obj);
+const text = json.replace(/["{}":]/g, '');
+	 console.log(json);		
+	 $('.options_text').val(json);	
+}
+})
+
+
+
+
+
+
+
+
+
+$('#form').on('submit',(function(e) {
+        e.preventDefault();
+
+
+        $('.proceed_to_viewing_section').hide();
+        $('.loading_btn').show();
+
+
+        var formData = new FormData(this);
+
+        $.ajax({
+            type:'POST',
+            url: 'php/getdata.php',
+            data:formData,
+            cache:false,
+            contentType: false,
+            processData: false,
+            success:function(data){
+                //console.log("success");
+                console.log(data);
+                // console.log(res.length);
+
+                 $('.proceed_to_viewing_section').show();
+        $('.loading_btn').hide();
+
+
+
+            	 var res = JSON.parse(data);
+            	 $('#synthesize_section').hide();
+							 $('#viewing_section').show();
+							 $('.viewing_section_bottom').show();
+
+
+
+
+
+
+//////////////Menu Section start///////////////////
+
+
+
+	var menudata = [];
+    var printData = '';
+    var submenu = [];
+
+  	     for (var i = 0; i < res.length; i++) {
+  	     	//console.log(res[i]['files']);    	
+            for (var j = 0; j < res[i]['files'].length; j++) {
+  	     			// menudata += res[i]['files'][j];  	     			
+ 	     			  menudata.push(res[i]['files'][j]);     		
+
+  	       	}	
+  	      }
+
+         var unique_menu = new Set(menudata);
+         var arraydata = Array.from(unique_menu);
+  	       
+          
+
+          for (var h = 0; h < res.length; h++) {
+                  //  console.log(res[h]['operation']['name']);
+                  submenu.push(res[h]['operation']['name']);
+                 // printData += '<li>'+res[h]['operation']['name']+'</li>';
+            }   
+
+
+
+          for (var k = 0; k < arraydata['length']; k++) {
+           // console.log(arraydata[k]);
+            if (arraydata[k] == 'ALL_FILES') {
+
+
+              printData += '<ul class="menu-ul">';
+              printData += '<li class="menu-li-head-title">Combined</li>';          
+              printData += '</ul>';
+              printData += '<ul class="menu-ul">';         
+             
+              for (var h = 0; h < res.length; h++) {
+                    //console.log(res[h]['operation']['name']);
+                 printData += '<li>'+res[h]['operation']['name']+'</li>';
+              }              
+              //printData += '<li>Similarities & Difference</li>';
+              printData += ' </ul>';
+              printData += '<hr>';
+
+        }
+        else{
+              printData += '<ul class="menu-ul">';
+              printData += '<li class="menu-li-head-title">Article '+parseInt(k+1)+'</li>'; 
+              printData += '<li style="font-size:10px;font-weight: normal" class="menu-li-head-title">'+arraydata[k]+'</li>';         
+              printData += '</ul>';
+             printData += '<ul class="menu-ul">';         
+             
+              
+               for (var h = 0; h < res.length; h++) {
+                    //console.log(res[h]['operation']['name']);
+                 printData += '<li>'+res[h]['operation']['name']+'</li>';
+              }   
+               var unique_submenu = new Set(submenu);
+               var arraydata_sub = Array.from(unique_submenu);
+
+                //console.log(unique_submenu);
+
+              //printData += '<li>Similarities & Difference</li>';
+              printData += ' </ul>';
+              printData += '<hr>';
+        }
+
+          }
+
+          $('.menu-section').html(printData);
+
+
+
+
+
+////////////////////End///////////////////// 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	 	var printData = '';
+			for (var i = 0; i < res.length; i++) {
+				//console.log(res[i]['tree_index']['all_nodes']);
+				if (res[i]['operation']['name'] == 'key_questions') {
+					// console.log(res[i]['tree_index']['all_nodes']); 
+					var all_nodes = Object.keys(res[i]['tree_index']['all_nodes']);		
+
+
+					   printData +='<details class="accordion">';
+					   printData +=' <summary class="accordion__title">';
+
+					   
+					   for (var k = 0; k < res[i]['files']['length']; k++) {
+					   		//console.log(res[i]['files'][k]);
+					   		printData += res[i]['operation']['name'] +'&nbsp;-&nbsp;<span style="font-weight:normal;font-size:13px;">'+ res[i]['files'][k]+'</span>';
+					   }
+
+
+					   
+					   printData +=' </summary>';
+					   printData +=' <div class="accordion__content">';
+
+
+					   	for (var j = 0; j < all_nodes['length']; j++) {
+						//console.log(res[i]['tree_index']['all_nodes'][j]['text']);
+						  printData +='<p><b>'+res[i]['tree_index']['all_nodes'][j]['index']+':</b>'+res[i]['tree_index']['all_nodes'][j]['text']+'</p>';
+					    }
+
+					   
+
+					   //console.log(all_nodes.length);  		    
+					   printData +='</div>';
+					    printData +='</details>';
+
+
+
+
+				}	
+				else if (res[i]['operation']['name'] == 'similarity_difference') {
+					//console.log(res[i]['tree_index']['all_nodes']);
+					var all_nodes = Object.keys(res[i]['tree_index']['all_nodes']);		
+					 printData +='<details class="accordion">';
+					  printData +=' <summary class="accordion__title">';
+					    for (var k = 0; k < res[i]['files']['length']; k++) {
+					   		//console.log(res[i]['files'][k]);
+					   		printData += res[i]['operation']['name'] +'&nbsp;-&nbsp;<span style="font-weight:normal;font-size:13px;">'+ res[i]['files'][k]+'</span>';
+					   }
+					   printData +=' </summary>';
+					   printData +=' <div class="accordion__content">';
+
+					   
+					   	for (var j = 0; j < all_nodes['length']; j++) {
+						//console.log(res[i]['tree_index']['all_nodes'][j]['text']);
+						  printData +='<p><b>'+res[i]['tree_index']['all_nodes'][j]['index']+':</b>'+res[i]['tree_index']['all_nodes'][j]['text']+'</p>';
+					    }
+
+					   //console.log(all_nodes.length);  		    
+					   printData +='</div>';
+					    printData +='</details>';
+				}
+				else if (res[i]['operation']['name'] == 'key_insights') {
+					//console.log(res[i]['tree_index']['all_nodes']);
+					var all_nodes = Object.keys(res[i]['tree_index']['all_nodes']);		
+					 printData +='<details class="accordion">';
+					  printData +=' <summary class="accordion__title">';
+					    for (var k = 0; k < res[i]['files']['length']; k++) {
+					   		//console.log(res[i]['files'][k]);
+					   		printData += res[i]['operation']['name'] +'&nbsp;-&nbsp;<span style="font-weight:normal;font-size:13px;">'+ res[i]['files'][k]+'</span>';
+					   }
+					   printData +=' </summary>';
+					   printData +=' <div class="accordion__content">';
+
+					  for (var j = 0; j < all_nodes['length']; j++) {
+						//console.log(res[i]['tree_index']['all_nodes'][j]['text']);
+						  printData +='<p><b>'+res[i]['tree_index']['all_nodes'][j]['index']+':</b>'+res[i]['tree_index']['all_nodes'][j]['text']+'</p>';
+					    }
+
+					   //console.log(all_nodes.length);  		    
+					   printData +='</div>';
+					    printData +='</details>';
+				}
+				else if (res[i]['operation']['name'] == 'key_summary') {
+					//console.log(res[i]['tree_index']['all_nodes']);
+					var all_nodes = Object.keys(res[i]['tree_index']['all_nodes']);		
+					 printData +='<details class="accordion">';
+					  printData +=' <summary class="accordion__title">';
+					    for (var k = 0; k < res[i]['files']['length']; k++) {
+					   		//console.log(res[i]['files'][k]);
+					   		printData += res[i]['operation']['name'] +'&nbsp;-&nbsp;<span style="font-weight:normal;font-size:13px;">'+ res[i]['files'][k]+'</span>';
+					   }
+					   printData +=' </summary>';
+					   printData +=' <div class="accordion__content">';
+
+					   for (var j = 0; j < all_nodes['length']; j++) {
+						//console.log(res[i]['tree_index']['all_nodes'][j]['text']);
+						  printData +='<p><b>'+res[i]['tree_index']['all_nodes'][j]['index']+':</b>'+res[i]['tree_index']['all_nodes'][j]['text']+'</p>';
+					    }
+
+					   //console.log(all_nodes.length);  		    
+					   printData +='</div>';
+					    printData +='</details>';
+				}	
+				else if (res[i]['operation']['name'] == 'central_themes_main_points') {
+					//console.log(res[i]['tree_index']['all_nodes']);
+					var all_nodes = Object.keys(res[i]['tree_index']['all_nodes']);		
+					 printData +='<details class="accordion">';
+					  printData +=' <summary class="accordion__title">';
+					  for (var k = 0; k < res[i]['files']['length']; k++) {
+					   		//console.log(res[i]['files'][k]);
+					   		printData += res[i]['operation']['name'] +'&nbsp;-&nbsp;<span style="font-weight:normal;font-size:13px;">'+ res[i]['files'][k]+'</span>';
+					   }
+					   printData +=' </summary>';
+					   printData +=' <div class="accordion__content">';
+
+					   for (var j = 0; j < all_nodes['length']; j++) {
+						//console.log(res[i]['tree_index']['all_nodes'][j]['text']);
+						  printData +='<p><b>'+res[i]['tree_index']['all_nodes'][j]['index']+':</b>'+res[i]['tree_index']['all_nodes'][j]['text']+'</p>';
+					    }
+
+					   //console.log(all_nodes.length);  		    
+					   printData +='</div>';
+					    printData +='</details>';
+				}
+				else{
+					console.log("operation not found");
+				}
+
+					
+			}
+
+
+			$('#fetchData').html(printData);
+		
+
+
+         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            },
+            error: function(data){
+                console.log("error");
+                console.log(data);
+            }
+        });
+    }));
+
+
+
+
+
+
+
+
+
+
+
+// render functions
+function renderFileList() {
+  let fileMap = state.filesArr.map((file, index) => {
+    let suffix = "bytes";
+    let size = file.size;
+    if (size >= 1024 && size < 1024000) {
+      suffix = "KB";
+      size = Math.round(size / 1024 * 100) / 100;
+    } else if (size >= 1024000) {
+      suffix = "MB";
+      size = Math.round(size / 1024000 * 100) / 100;
+    }
+    return `<li key="${index}">${file.name} <span class="file-size">${size} ${suffix}</span><i class="material-icons md-48">delete</i></li>`;
+  });
+  $("#selected_files_ul").html(fileMap);
+}
+
+
+
+
+$('.back_btn2').click(function(){
+	$('#synthesize_section').show();
+	$('#viewing_section').hide();
+	$('.viewing_section_bottom').hide();
+	$('.bottom_outline_section').hide();
+})
+
+$('.back_btn3').click(function(){
+	$('#outline_section').hide();
+	$('#viewing_section').show();
+})
+
+
+function next_viewing_btn(){
+	$('#viewing_section').hide();
+	$('#outline_section').show();
+}
+
+
+
+</script>
